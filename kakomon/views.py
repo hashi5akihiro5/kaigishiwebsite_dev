@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+""" Top画面 """
+
+
+class IndexView(TemplateView):
+    template_name = "kakomon/index.html"

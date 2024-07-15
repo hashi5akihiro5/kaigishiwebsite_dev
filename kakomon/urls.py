@@ -11,4 +11,14 @@ urlpatterns = [
         views.ExamListView.as_view(),
         name="list_exam",
     ),
+    path(
+        "<exam_type>/<navigation_or_engineering>/<grade>/<int:year>/<int:month>/",
+        views.SubjectListView.as_view(),
+        name="list_subject",
+    ),
+    path(
+        "<exam_type>/<navigation_or_engineering>/<grade>/<int:year>/<int:month>/<subject>/",
+        views.QuestionListView.as_view(),
+        name="list_question",
+    ),
 ]

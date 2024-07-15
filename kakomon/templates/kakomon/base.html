@@ -19,6 +19,16 @@
             <div class="container py-3">
                 <a class="navbar-brand text-white fs-2" href={% url 'kakomon:index' %}>海技士過去問サイト</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse align-items-center" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link text-white" href={% url 'accounts:profile' user.id %}>マイページ</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link text-white" href={% url 'accounts:login' %}>ログイン</a></li>
+                        {% endif %}
+                        <li class="nav-item"><a class="nav-link text-white" href={% url 'accounts:contact' %}>お問合せ</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         {% block exam_nav %}{% endblock %}

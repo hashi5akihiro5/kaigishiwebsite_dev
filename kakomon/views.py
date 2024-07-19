@@ -70,7 +70,7 @@ class SubjectListView(ListView):
             self.kwargs.get("navigation_or_engineering"), NAVIGATION_OR_ENGINEERING
         )
         self.grade = find_key_for_value(self.kwargs.get("grade"), GRADE)
-        self.year = self.kwargs.get("year")
+        self.year = str(self.kwargs.get("year")).zfill(4)
         self.month = self.kwargs.get("month")
         self.exam_id = get_exam_id(
             self.exam_type,
@@ -84,6 +84,8 @@ class SubjectListView(ListView):
         queryset = super().get_queryset()
 
         self.get_form_kwargs()
+        print(self.exam_id)
+        print(self.year)
 
         # フィルタリング
         queryset = queryset.filter(exam__exam_id=self.exam_id)
@@ -119,7 +121,7 @@ class QuestionListView(ListView):
             self.kwargs.get("navigation_or_engineering"), NAVIGATION_OR_ENGINEERING
         )
         self.grade = find_key_for_value(self.kwargs.get("grade"), GRADE)
-        self.year = self.kwargs.get("year")
+        self.year = str(self.kwargs.get("year")).zfill(4)
         self.month = self.kwargs.get("month")
         self.exam_id = get_exam_id(
             self.exam_type,

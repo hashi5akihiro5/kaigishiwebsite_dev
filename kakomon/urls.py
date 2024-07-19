@@ -21,4 +21,9 @@ urlpatterns = [
         views.QuestionListView.as_view(),
         name="list_question",
     ),
+    path(
+        "<exam_type>/<navigation_or_engineering>/<grade>/<int:year>/<int:month>/<subject>/",
+        views.QuestionListView.as_view(),
+        name="list_question_speanking",
+    ),
 ]

@@ -154,7 +154,7 @@
         {% regroup questions by category as categorys %}
         {% for category in categorys %}
             <div class="subtitle mb-3">
-                <h3>{{ forloop.counter }}.  {{ category.grouper }}</h3>
+                <h3>第{{ forloop.counter }}章  {{ category.grouper }}</h3>
             </div>
             {% for question in  category.list %}
                 <p class="no-indent">{{ question.question | safe | linebreaksbr }}</p>

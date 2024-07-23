@@ -107,10 +107,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    ordering = ["id"]
     list_display = ("id", "name")
 
 
 class TagAdmin(admin.ModelAdmin):
+    ordering = ["id"]
     list_display = ("id", "name")
 
 

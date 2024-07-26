@@ -101,6 +101,10 @@ class Subject(models.Model):
 
 class Question(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name="科目")
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True, blank=True
+    )
+    tags = models.ManyToManyField(Tag, blank=True)
     daimon = models.PositiveSmallIntegerField(verbose_name="大問")
     daimon_description = models.TextField(
         verbose_name="大問説明", null=True, blank=True
@@ -113,9 +117,6 @@ class Question(models.Model):
     )
     edamon = models.PositiveSmallIntegerField(
         verbose_name="枝問", null=True, blank=True
-    )
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, null=True, blank=True
     )
     question_image = models.ImageField(
         verbose_name="問題画像", upload_to=get_image_upload_path, null=True, blank=True

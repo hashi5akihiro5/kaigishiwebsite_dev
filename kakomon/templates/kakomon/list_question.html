@@ -156,31 +156,37 @@
             <div class="subtitle mb-3">
                 <h3>第{{ forloop.counter }}章  {{ category.grouper }}</h3>
             </div>
-            {% for question in  category.list %}
-                <p class="no-indent">{{ question.question | safe | linebreaksbr }}</p>
-                <!-- 解答 section -->
-                <details class="details">
-                    <summary class="details__summary">正解を表示する</summary>
-                    {% if question.answer_no_indent %}
-                        <div class="details__content">
-                            <p class="ps-2 no-indent">{{ question.answer | safe | linebreaksbr }}</p>
-                            {% if question.answer_image %}
-                            <div>
-                                <img src="{{ question.answer_image.url }}" class="img-fluid" alt="Answer Image">
+            {% regroup category.list by tags.all.0.name as tag_list %}
+            {% for tag in tag_list %}
+                <div class="subtitle mb-3">
+                    <h4>{{ tag.grouper }}</h4>
+                </div>
+                {% for question in  tag.list %}
+                    <p class="no-indent">{{ question.question | safe | linebreaksbr }}</p>
+                    <!-- 解答 section -->
+                    <details class="details">
+                        <summary class="details__summary">正解を表示する</summary>
+                        {% if question.answer_no_indent %}
+                            <div class="details__content">
+                                <p class="ps-2 no-indent">{{ question.answer | safe | linebreaksbr }}</p>
+                                {% if question.answer_image %}
+                                <div>
+                                    <img src="{{ question.answer_image.url }}" class="img-fluid" alt="Answer Image">
+                                </div>
+                                {% endif %}
                             </div>
-                            {% endif %}
-                        </div>
-                    {% else %}
-                        <div class="details__content">
-                            <p class="ps-2">{{ question.answer | safe | linebreaksbr }}</p>
-                            {% if question.answer_image %}
-                            <div>
-                                <img src="{{ question.answer_image.url }}" class="img-fluid" alt="Answer Image">
+                        {% else %}
+                            <div class="details__content">
+                                <p class="ps-2">{{ question.answer | safe | linebreaksbr }}</p>
+                                {% if question.answer_image %}
+                                <div>
+                                    <img src="{{ question.answer_image.url }}" class="img-fluid" alt="Answer Image">
+                                </div>
+                                {% endif %}
                             </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                </details>
+                        {% endif %}
+                    </details>
+                {% endfor %}
             {% endfor %}
         {% endfor %}
     {% endif %}

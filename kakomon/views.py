@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.views.generic import ListView, TemplateView
 
 from .constants import EXAMTYPE, GRADE, NAVIGATION_OR_ENGINEERING, SUBJECT
@@ -141,9 +142,10 @@ class QuestionListView(ListView):
         queryset = queryset.filter(
             subject__exam__exam_id=self.exam_id, subject__name=self.subject
         )
-
         # カテゴライズ
-        queryset = queryset.all().order_by("category")
+        queryset = queryset.order_by(
+            F("category").asc(nulls_first=True), "daimon", "shomon", "edamon"
+        )
 
         return queryset
 

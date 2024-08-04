@@ -12,7 +12,7 @@ from .constants import (
 )
 from .functions import default_exam_id, get_file_path, get_image_upload_path
 
-"""カテゴリーモデル"""
+"""1.カテゴリーモデル"""
 
 
 class Category(models.Model):
@@ -26,7 +26,7 @@ class Category(models.Model):
         return self.name
 
 
-"""タグモデル"""
+"""2.タグモデル"""
 
 
 class Tag(models.Model):
@@ -40,7 +40,7 @@ class Tag(models.Model):
         return self.name
 
 
-"""試験モデル"""
+"""3.試験モデル"""
 
 
 class Exam(models.Model):
@@ -63,7 +63,7 @@ class Exam(models.Model):
         verbose_name_plural = "3.試験"
 
 
-"""科目モデル"""
+"""4.科目モデル"""
 
 
 class Subject(models.Model):
@@ -96,7 +96,7 @@ class Subject(models.Model):
         verbose_name_plural = "4.科目"
 
 
-"""問題モデル"""
+"""5.問題モデル"""
 
 
 class Question(models.Model):

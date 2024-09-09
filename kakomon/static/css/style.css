@@ -62,6 +62,16 @@ p.no-indent {
   background-color: var(--bs-primary-bg-subtle);
 }
 
+.category-item {
+  text-decoration: none;
+}
+
+.category-item:hover {
+  color: var(--bs-primary);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 /* 問題設定 */
 /* 大問 */
 .daimon {

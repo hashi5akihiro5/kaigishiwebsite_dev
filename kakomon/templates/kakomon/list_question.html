@@ -39,7 +39,16 @@
                 <!-- 小問 section -->
                 {% if question.shomon %}
                 {% ifchanged question.shomon %}
+                {% if question.question_image_position_description_or_question == "shomon" %}
                 <div class="d-flex">
+                    <div class="order-2 align-items-center ms-3">
+                        <img src="{{ question.question_image.url }}" alt="Question Image">
+                    </div>
+                {% endif %}
+                {% if question.edamon == 1 %}
+                <div class="order-1">
+                {% endif %}
+                <div class="d-flex mt-3">
                     <p class="shomon">({{ question.get_shomon_display }})</p>
                     <!-- 小問横 問題説明あり 画像あり 右側 -->
                     {% if question.question_image_position_description_or_question == "description" and question.question_image_position_right_or_under == "right" %}
@@ -148,6 +157,10 @@
                         </div>
                     {% endif %}
                 </details>
+                {% if question.edamon == 3 %}
+                    </div>
+                </div>
+                {% endif %}
             {% endfor %}
         {% endfor %}
     {% elif exam_type == "口述" %}

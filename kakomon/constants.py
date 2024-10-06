@@ -45,6 +45,7 @@ SHOMON = (
 )
 
 IMG_DESCRIPTION_OR_QUESTION = (
+    ("shomon", "小問全体"),
     ("description", "説明"),
     ("question", "問題"),
 )
